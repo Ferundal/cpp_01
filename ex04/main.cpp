@@ -1,25 +1,56 @@
-#include "Weapon.hpp"
-
 #include <iostream>
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include <fstream>
 
-int	main() {
+int	find_pos_in_array(const char *arr_start, int arr_len, const char *str, int str_len) {
+	int pos = 0;
+	while (pos < arr_len - str_len)
 	{
-		Weapon humanAWeapon ("Axe");
-		HumanA jack ("Jack", humanAWeapon);
-		jack.attack();
-		humanAWeapon.setType("Bow");
-		jack.attack();
+		int i = 0;
+		while (i < str_len) {
+			if (arr_start[pos + i] != str[i])
+				break;
+			++i;
+		}
+		if (i == str_len)
+			return (pos);
+		++pos;
 	}
-	{
-		HumanB billy ("Billy");
-		billy.attack();
-		Weapon humanBWeapon ("Polearm");
-		billy.SetWeapon(&humanBWeapon);
-		billy.attack();
-		humanBWeapon.setType("Sword");
-		billy.attack();
+	return (-1);
+}
+
+int	main(int argc, char **argv) {
+	if (argc  != 4) {
+		std::cout << "Wrong arguments amount!" << std::endl;
+		return (-1);
 	}
+
+	std::string filename = argv[1];
+	std::string s1 = argv[2];
+	std::string s2 = argv[3];
+
+	if (s1.empty()) {
+		std::cout << "Can't replace nothing!" << std::endl;
+		return (-1);
+	}
+	std::ifstream inputFile;
+	inputFile.open(filename.c_str());
+	if (!inputFile.is_open()) {
+		std::cout << "Can't open source file!" << std::endl;
+		return (-1);
+	}
+	std::ofstream outputFile;
+	std::string outputFileName (filename);
+	outputFileName.append(".replace");
+	outputFile.open(outputFileName.c_str());
+	if (!inputFile.is_open()) {
+		std::cout << "Can't create replace file!" << std::endl;
+		return (-1);
+	}
+	std::string buff;
+	std::string line;
+	while (std::getline(inputFile, line).eof() ==  ) {
+		buff+= line + '\n';
+	}
+	outputFile << buff;
+
 }

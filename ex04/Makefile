@@ -40,9 +40,7 @@ INC_HEADERS_FORMAT=	-I ${dir ${HEADERS}}
 
 INC_HEADERS_DIR=	${foreach HEADERS, ${HEADERS}, ${INC_HEADERS_FORMAT}}
 
-SRCS_CLASSES=		Weapon.cpp \
-					HumanA.cpp \
-					HumanB.cpp \
+SRCS_CLASSES=
 
 SRCS_CPP=			${SRCS_CLASSES} \
 					main.cpp
@@ -55,7 +53,7 @@ endif
 
 OBJS_CPP=			${SRCS_CPP:.cpp=.o}
 
-NAME=				humans
+NAME=				replace
 
 CC=					clang++
 RM=					rm -f
