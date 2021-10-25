@@ -53,7 +53,7 @@ endif
 
 OBJS_CPP=			${SRCS_CPP:.cpp=.o}
 
-NAME=				humans
+NAME=				karen
 
 CC=					clang++
 RM=					rm -f

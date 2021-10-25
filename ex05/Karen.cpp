@@ -1,6 +1,11 @@
 #include "Karen.hpp"
 
-std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+static			std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+		functions[] = {
+		Karen::debug(),
+		Karen::debug()
+};
+
 
 Karen::Karen()  {
 
