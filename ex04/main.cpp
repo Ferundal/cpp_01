@@ -48,9 +48,13 @@ int	main(int argc, char **argv) {
 	}
 	std::string buff;
 	std::string line;
-	while (std::getline(inputFile, line).eof() ==  ) {
-		buff+= line + '\n';
+	bool read_status = std::getline(inputFile, line);
+	while (read_status) {
+		buff+= line;
+		read_status = std::getline(inputFile, line);
+		if (read_status)
+			buff+= '\n';
 	}
-	outputFile << buff;
 
+	outputFile << buff;
 }
