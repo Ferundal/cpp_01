@@ -50,11 +50,20 @@ int	main(int argc, char **argv) {
 	std::string line;
 	bool read_status = std::getline(inputFile, line);
 	while (read_status) {
-		buff+= line;
+		buff += line;
 		read_status = std::getline(inputFile, line);
 		if (read_status)
 			buff+= '\n';
 	}
-
-	outputFile << buff;
+	size_t	cpy_start = 0;
+	size_t	pos = buff.find(s1, cpy_start);
+	line = "";
+	while (pos != std::string::npos) {
+		line.append(buff, cpy_start, pos - cpy_start);
+		line.append(s2);
+		cpy_start = pos + s1.length();
+		pos = buff.find(s1, cpy_start);
+	}
+	line.append(buff, cpy_start, buff.length() - cpy_start);
+	outputFile << line;
 }
