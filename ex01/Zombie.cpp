@@ -1,21 +1,21 @@
 #include "Zombie.hpp"
 
-void Weapon::announce () {
+void Zombie::announce () {
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-Weapon::Weapon() {
+Zombie::Zombie() {
 
 }
 
-Weapon::Weapon(std::string new_zombie_name) {
+Zombie::Zombie(std::string new_zombie_name) {
 	name = new_zombie_name;
 }
 
-void Weapon::RenameZombie(std::string new_zombie_name ) {
+void Zombie::RenameZombie(std::string new_zombie_name ) {
 	name = new_zombie_name;
 }
 
-Weapon::~Weapon() {
+Zombie::~Zombie() {
 	std::cout << name << ": Oh nooo... I am dead again..." << std::endl;
 }
